@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
+import { DataFormService } from '../data-form.service'
+
+import { FormModel } from './form.model'
+
 @Component({
   selector: 'tf-form',
   templateUrl: './form.component.html'
@@ -9,7 +13,9 @@ export class FormComponent implements OnInit {
 
   formGroup: FormGroup
 
-  constructor(private formBuilder: FormBuilder) { }
+  formModel: FormModel[] = []
+
+  constructor(private formBuilder: FormBuilder, private dataFormService: DataFormService) { }
 
   ngOnInit() {
     this.initForm()
@@ -22,6 +28,10 @@ export class FormComponent implements OnInit {
       password: this.formBuilder.control('', [Validators.required, Validators.minLength(8)]),
       secondName: this.formBuilder.control('', [Validators.required, Validators.minLength(5)])
     })
+  }
+
+  submit(){
+
   }
 
 }
