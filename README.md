@@ -1,6 +1,6 @@
-# TestForm
+# Testando o Reactive Forms
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
+Esse projeto tem como objetivo apenas ser um teste de como utilizar o reactive forms no angular e enviar os dados do formulario para um arquivo Json.
 
 ## Development server
 
