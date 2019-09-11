@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
-import { DataFormService } from '../data-form.service'
-
-import { FormModel } from './form.model'
-
 @Component({
   selector: 'tf-form',
   templateUrl: './form.component.html'
@@ -13,9 +9,7 @@ export class FormComponent implements OnInit {
 
   formGroup: FormGroup
 
-  formModel: FormModel[] = []
-
-  constructor(private formBuilder: FormBuilder, private dataFormService: DataFormService) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.initForm()
@@ -31,7 +25,7 @@ export class FormComponent implements OnInit {
   }
 
   submit(){
-
+    console.log('clicou')
   }
 
 }
