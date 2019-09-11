@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table-hover mt-5">
   <thead>
     <tr>
       <th scope="col">Nome</th>
@@ -7,10 +7,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
+    <tr *ngFor="let form of forms">
+      <td>{{form.name}}</td>
+      <td>{{form.secondName}}</td>
+      <td>{{form.email}}</td>
     </tr>
   </tbody>
 </table>

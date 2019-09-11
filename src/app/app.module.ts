@@ -11,6 +11,7 @@ import { FormComponent } from './form/form.component';
 import { MessageInputComponent } from './message-input/message-input.component';
 import { HeaderComponent } from './header/header.component';
 import { DataTableComponent } from './data-table/data-table.component';
+import { FormService } from './form/form.service'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { DataTableComponent } from './data-table/data-table.component';
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [FormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
