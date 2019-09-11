@@ -11,7 +11,7 @@ export class MessageInputComponent implements OnInit, AfterContentInit {
 
   input: any
 
-  @ContentChild(FormControlName) control: FormControlName
+  @ContentChild(FormControlName, {static:false}) control: FormControlName
 
   constructor() { }
 
