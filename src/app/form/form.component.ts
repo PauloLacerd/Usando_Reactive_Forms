@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
+import { FormService } from './form.service'
+import { FormModel } from './form.model'
 
 @Component({
   selector: 'tf-form',
@@ -10,7 +12,9 @@ export class FormComponent implements OnInit {
 
   formGroup: FormGroup
 
-  constructor(private formBuilder: FormBuilder) { }
+  form: FormModel
+
+  constructor(private formBuilder: FormBuilder, private formService: FormService) { }
 
   ngOnInit() {
     this.initForm()
@@ -25,8 +29,9 @@ export class FormComponent implements OnInit {
     })
   }
 
-  submit(){
-    console.log('clicou')
+  submit(form: FormModel){
+    this.formService.postDataForm(form)
+    console.log(this.formGroup.value)
   }
 
 }

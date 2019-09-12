@@ -14,7 +14,11 @@ export class DataTableComponent implements OnInit {
   constructor(private formService: FormService) { }
 
   ngOnInit() {
-    this.forms = this.formService.getData()
+    this.getData()
+  }
+
+  getData(): void{
+    this.formService.getData().subscribe(form => this.forms = form)
   }
 
 }
