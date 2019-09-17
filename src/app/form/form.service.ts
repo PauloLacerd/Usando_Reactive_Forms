@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 
 import { HttpClient, HttpHeaders} from '@angular/common/http'
-import { catchError } from 'rxjs/operators'
 import { Observable } from 'rxjs'
 
 import { FormModel } from './form.model'
@@ -22,7 +21,7 @@ export class FormService{
     return this.http.get<FormModel[]>(`${this.FORM_API}/data`)
   }
 
-  postDataForm(form: FormModel): Observable<FormModel>{
-    return this.http.post<FormModel>(this.FORM_API, JSON.stringify(form), this.httpOptions)
+  postDataForm(form: FormModel){
+    return this.http.post(this.FORM_API, form)
   }
 }

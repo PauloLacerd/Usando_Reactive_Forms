@@ -29,9 +29,13 @@ export class FormComponent implements OnInit {
     })
   }
 
-  submit(form: FormModel){
-    this.formService.postDataForm(form)
-    console.log(this.formGroup.value)
-  }
+  submit(){
+    this.form = {name: `${this.formGroup.get('name').value}`,
+    secondName: `${this.formGroup.get('secondName').value}`,
+    password: `${this.formGroup.get('password').value}`,
+    email: `${this.formGroup.get('email').value}`}
 
+    this.formService.postDataForm(this.form)
+    console.log(this.form)
+  }
 }
