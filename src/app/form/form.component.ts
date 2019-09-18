@@ -33,7 +33,8 @@ export class FormComponent implements OnInit {
     this.form = {name: `${this.formGroup.get('name').value}`,
     secondName: `${this.formGroup.get('secondName').value}`,
     password: `${this.formGroup.get('password').value}`,
-    email: `${this.formGroup.get('email').value}`}
+    email: `${this.formGroup.get('email').value}`,
+    id: `${this.formGroup.get('id').value}`}
 
     this.formService.postDataForm(this.form)
     console.log(this.form)

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core'
 
-import { HttpClient, HttpHeaders} from '@angular/common/http'
-import { Observable } from 'rxjs'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Observable, throwError } from 'rxjs'
+import { retry, catchError } from 'rxjs/operators'
 
 import { FormModel } from './form.model'
 
@@ -21,7 +22,19 @@ export class FormService{
     return this.http.get<FormModel[]>(this.FORM_API)
   }
 
-  postDataForm(form: FormModel){
-    return this.http.post(this.FORM_API, form, httpOptions)
+  postDataForm(form: FormModel): Observable<FormModel>{
+    return this.http.post<FormModel>(this.FORM_API, JSON.stringify(form), httpOptions)
+    .pipe(retry(1), catchError(this.errorHandl))
+  }
+
+  errorHandl(error){
+    let errorMessage = ''
+    if(error.error instanceof ErrorEvent){
+      errorMessage = error.error.message
+    }else{
+      errorMessage = `Error code: ${error.status}\nMessage:${error.message}`
+    }
+    console.log(errorMessage)
+    return throwError(errorMessage)
   }
 }
