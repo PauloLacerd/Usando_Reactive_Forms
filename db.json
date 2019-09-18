@@ -4,12 +4,7 @@
       "name": "Paulo",
       "secondName": "Vasconcelos",
       "email": "teste@teste.com",
-<<<<<<< HEAD
       "password": "12345678"
-=======
-      "password": "12345678",
-      "id": "1"
->>>>>>> f382fb3092a124bcb7a47e229d38aa245bfc095c
     }
   ]
 }
