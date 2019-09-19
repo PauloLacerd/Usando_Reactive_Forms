@@ -23,9 +23,10 @@ export class FormComponent implements OnInit {
   initForm(){
     this.formGroup = this.formBuilder.group({
       email: this.formBuilder.control('', [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),
-      name: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
+      name: this.formBuilder.control('', [Validators.required, Validators.minLength(4)]),
       password: this.formBuilder.control('', [Validators.required, Validators.minLength(8)]),
-      secondName: this.formBuilder.control('', [Validators.required, Validators.minLength(5)])
+      secondName: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
+      id: this.formBuilder.control('', [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}/)])
     })
   }
 

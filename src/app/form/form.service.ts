@@ -6,11 +6,6 @@ import { retry, catchError } from 'rxjs/operators'
 
 import { FormModel } from './form.model'
 
-const httpOptions = {headers: new HttpHeaders({
-  'Content-type': 'application/json'
-})
-}
-
 @Injectable()
 export class FormService{
 
@@ -23,6 +18,12 @@ export class FormService{
   }
 
   postDataForm(form: FormModel): Observable<FormModel>{
+
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-type': 'application/json'
+      })
+    }
+
     return this.http.post<FormModel>(this.FORM_API, JSON.stringify(form), httpOptions)
     .pipe(retry(1), catchError(this.errorHandl))
   }
