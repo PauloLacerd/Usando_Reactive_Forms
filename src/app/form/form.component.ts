@@ -25,19 +25,13 @@ export class FormComponent implements OnInit {
       email: this.formBuilder.control('', [Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]),
       name: this.formBuilder.control('', [Validators.required, Validators.minLength(4)]),
       password: this.formBuilder.control('', [Validators.required, Validators.minLength(8)]),
-      secondName: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
-      id: this.formBuilder.control('', [Validators.required, Validators.minLength(11), Validators.pattern(/^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}/)])
+      secondName: this.formBuilder.control('', [Validators.required, Validators.minLength(5)])
     })
   }
 
   submit(){
-    this.form = {name: `${this.formGroup.get('name').value}`,
-    secondName: `${this.formGroup.get('secondName').value}`,
-    password: `${this.formGroup.get('password').value}`,
-    email: `${this.formGroup.get('email').value}`,
-    id: `${this.formGroup.get('id').value}`}
-
-    this.formService.postDataForm(this.form)
-    console.log(this.form)
+    this.form = this.formGroup.value
+    this.formService.postDataForm(this.form).subscribe(success => console.log('Usuário cadastrado com sucesso !!!'))
+    this.formGroup.reset()
   }
 }

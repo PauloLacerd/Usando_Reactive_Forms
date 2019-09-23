@@ -1,5 +1,5 @@
 export class FormModel{
-  id: string
+  id: number
   name: string
   secondName: string
   email: string

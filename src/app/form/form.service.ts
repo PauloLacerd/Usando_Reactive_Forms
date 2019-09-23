@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core'
 
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable, throwError } from 'rxjs'
-import { retry, catchError } from 'rxjs/operators'
+import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs'
+import { take } from 'rxjs/operators'
 
 import { FormModel } from './form.model'
 
@@ -18,24 +18,6 @@ export class FormService{
   }
 
   postDataForm(form: FormModel): Observable<FormModel>{
-
-    const httpOptions = {headers: new HttpHeaders({
-      'Content-type': 'application/json'
-      })
-    }
-
-    return this.http.post<FormModel>(this.FORM_API, JSON.stringify(form), httpOptions)
-    .pipe(retry(1), catchError(this.errorHandl))
-  }
-
-  errorHandl(error){
-    let errorMessage = ''
-    if(error.error instanceof ErrorEvent){
-      errorMessage = error.error.message
-    }else{
-      errorMessage = `Error code: ${error.status}\nMessage:${error.message}`
-    }
-    console.log(errorMessage)
-    return throwError(errorMessage)
+    return this.http.post<FormModel>(this.FORM_API, form).pipe(take(1))
   }
 }
